@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto !important;
+  }
+
+// input:-webkit-autofill,
+// textarea:-webkit-autofill,
+// select:-webkit-autofill {
+//   -webkit-box-shadow: 0 0 0 1000px white inset;
+// }
+// input[type=text]:focus, input[type=password]:focus, textarea:focus {
+//   -webkit-box-shadow: 0 0 0 1000px white inset;
+// }
+
+input:-webkit-autofill {
+  animation: autofill-fix 1s infinite;
+  -webkit-animation: autofill-fix 1s infinite;
+}
+
+@keyframes autofill-fix {
+  from {
+    background-color: transparent
+  }
+  to {
+    background-color: transparent
+  }
+}
+
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+a,
+a:focus,
+a:hover {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: none;
+}
+
+.main-content{
+  min-height: calc(100vh);
+}
