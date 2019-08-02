@@ -9,7 +9,6 @@ import i18n from '@/i18n'
 import '@/styles/index.scss'
 
 import Mock from './mock'
-
 Mock.bootstrap()
 
 // global filters
@@ -18,9 +17,11 @@ Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
 
-Vue.config.productionTip = false
+// global directives
+import permission from '@/directives/permission'
+Vue.use(permission)
 
-Vue.router = router
+Vue.config.productionTip = false
 
 new Vue({
   i18n,

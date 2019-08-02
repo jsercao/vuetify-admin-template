@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Login from '@/views/auth/login.vue'
 import Layout from '@/components/layouts/AppLayout.vue'
 import components from './modules/components'
+import permissions from './modules/permission'
 import store from '@/store'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
@@ -48,10 +49,10 @@ const router = new Router({
             icon: 'mdi-view-dashboard'
           }
         },
-        components
+        components,
+        permissions
       ]
     }
-
   ]
 })
 
@@ -66,7 +67,18 @@ router.beforeEach((to, from, next) => {
     next(`/login?redirect=${to.fullPath}`)
     NProgress.done()
   } else {
-    next()
+    const { user } = store.getters
+    if (!user || !user.name) {
+      store.dispatch('auth/getAuthInfo', { token })
+        .then(() => {
+          next()
+        })
+        .catch(() => {
+          next('/login')
+        })
+    } else {
+      next()
+    }
   }
 })
 

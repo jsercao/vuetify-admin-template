@@ -15,3 +15,11 @@ export function login(params) {
 export function logout(params) {
   return request.post('/logout', params)
 }
+
+/**
+ * 获取用户信息
+ * @param {*} params
+ */
+export function getAuthInfo(params) {
+  return request.get('/authInfo', params)
+}

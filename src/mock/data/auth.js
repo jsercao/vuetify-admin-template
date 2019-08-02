@@ -22,7 +22,7 @@ export default {
     const user = users[username]
     return user ? successResults({ ...users[username] }) : failResults('invalid login or password')
   },
-  usersMe: (params) => {
+  authInfo: (params) => {
     const { token } = parseURL(params.url).params
     const temp = token.match(/mock-token-(.*)/)
     const user = temp ? users[token.match(/mock-token-(.*)/)[1]] : ''

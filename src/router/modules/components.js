@@ -13,7 +13,15 @@ const routes = {
     {
       path: 'snackbar',
       name: 'snackbar',
-      component: () => import('@/views/components/snackbar.vue'),
+      component: () => import('@/views/components/snackbar'),
+      meta: {
+        icon: ''
+      }
+    },
+    {
+      path: 'form',
+      name: 'form',
+      component: () => import('@/views/components/form'),
       meta: {
         icon: ''
       }

@@ -6,6 +6,6 @@ export default {
     // auth
     Mock.mock(/^\/login(\?.*)?$/, 'post', authTemplates.login)
     Mock.mock(/^\/logout(\?.*)?$/, 'post', authTemplates.logout)
-    Mock.mock(/^\/users\/me(\?.*)?$/, 'get', authTemplates.usersMe)
+    Mock.mock(/^\/authInfo(\?.*)?$/, 'get', authTemplates.authInfo)
   }
 }
