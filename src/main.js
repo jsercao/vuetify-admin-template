@@ -4,6 +4,8 @@ import vuetify from '@/plugins/vuetify'
 
 import router from '@/router'
 import store from '@/store'
+import i18n from '@/i18n'
+
 import '@/styles/index.scss'
 
 import Mock from './mock'
@@ -21,6 +23,7 @@ Vue.config.productionTip = false
 Vue.router = router
 
 new Vue({
+  i18n,
   store,
   router,
   vuetify,

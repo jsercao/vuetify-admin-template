@@ -9,6 +9,7 @@
     </v-toolbar-title>
     <v-spacer />
     <v-toolbar-items>
+      <language-switch />
       <account-icon />
     </v-toolbar-items>
 
@@ -16,10 +17,12 @@
 </template>
 <script>
 import AccountIcon from './AccountIcon'
+import LanguageSwitch from '@/components/widgets/LanguageSwitch'
 export default {
   name: 'AppToolbar',
   components: {
-    AccountIcon
+    AccountIcon,
+    LanguageSwitch
   }
 }
 </script>

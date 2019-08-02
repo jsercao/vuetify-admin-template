@@ -86,7 +86,7 @@ export default {
       this.drawer = !this.drawer
     },
     generateTitle(title, route) {
-      return title
+      return title ? this.$t(`sidebar.${title.toLowerCase()}`) : ''
     },
     roleShow(route) {
       return true
