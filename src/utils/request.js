@@ -67,7 +67,10 @@ const fetchData = async(url, param, method) => {
     }
 
     if (errMsg) {
-      Snackbar.error(errMsg)
+      Snackbar({
+        type: 'error',
+        text: errMsg
+      })
     }
     return Promise.reject(res)
   })

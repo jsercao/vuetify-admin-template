@@ -11,7 +11,7 @@ const mutations = {
     const { token, role } = payload.data
     localStorage.setItem('token', token)
     state.token = token
-    state.roles = role.split(',')
+    state.roles = role
     state.user = payload.data
   },
   removeAuthInfo: (state) => {
@@ -32,7 +32,7 @@ const actions = {
   getAuthInfo({ commit, dispatch }, params) {
     return api.getAuthInfo(params).then(results => {
       commit('setAuthInfo', results)
-      return results
+      return results.data
     }, res => Promise.reject(res))
   },
   logout({ commit, dispatch }, params) {

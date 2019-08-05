@@ -1,3 +1,4 @@
+
 const routes = {
   path: '/permission',
   name: 'Permission',
@@ -7,7 +8,8 @@ const routes = {
   meta: {
     hasMulSub: true,
     hidden: false,
-    icon: 'mdi-axis-arrow-lock'
+    icon: 'mdi-axis-arrow-lock',
+    roles: ['admin']
   },
   children: [
     {

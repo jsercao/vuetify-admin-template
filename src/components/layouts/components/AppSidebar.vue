@@ -5,7 +5,6 @@
         <template v-for="(route, index) in routes">
           <template v-if="route.meta && route.meta.hasMulSub">
             <v-list-group
-              v-if="roleShow(route)"
               :key="index"
               :prepend-icon="route.meta && route.meta.icon"
               no-action
@@ -31,7 +30,7 @@
           </template>
           <!-- 无子菜单时 -->
           <template v-else>
-            <v-list-item v-if="roleShow(route)" :key="index" ripple :to="{ name: route.name }">
+            <v-list-item :key="index" ripple :to="{ name: route.name }">
               <v-list-item-icon>
                 <v-icon>{{ route.meta && route.meta.icon }}</v-icon>
               </v-list-item-icon>
@@ -45,7 +44,32 @@
   </v-navigation-drawer>
 </template>
 <script>
+import { mapGetters } from 'vuex'
 import VuePerfectScrollbar from 'vue-perfect-scrollbar'
+
+const hasPermission = (roles, route) => {
+  if (route.meta && route.meta.roles) {
+    return roles.some(role => route.meta.roles.includes(role))
+  } else {
+    return true
+  }
+}
+
+const filterRoutes = (routes, roles) => {
+  const res = []
+
+  routes.forEach(route => {
+    const tmp = { ...route }
+    if (hasPermission(roles, tmp)) {
+      if (tmp.children) {
+        tmp.children = filterRoutes(tmp.children, roles)
+      }
+      res.push(tmp)
+    }
+  })
+
+  return res
+}
 
 export default {
   name: 'AppSidebar',
@@ -61,10 +85,10 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(['roles']),
     routes() {
       const routeName = this.$route.name
-      const { routes } = this.$router.options
-
+      const routes = filterRoutes(this.$router.options.routes, this.roles)
       for (let i = 0, len = routes.length; i < len; i += 1) {
         if (routes[i].children) {
           for (let j = 0, len = routes[i].children.length; j < len; j += 1) {
@@ -77,7 +101,6 @@ export default {
           return routes[i]
         }
       }
-
       return routes[2].children
     }
   },
@@ -87,19 +110,6 @@ export default {
     },
     generateTitle(title, route) {
       return title ? this.$t(`sidebar.${title.toLowerCase()}`) : ''
-    },
-    roleShow(route) {
-      return true
-      // if (!route.meta) {
-      //   return true
-      // }
-
-      // if (!this.user || route.meta.hidden) {
-      //   return false
-      // }
-
-      // const { auth } = route.meta
-      // return auth ? (!auth.length && !this.user.role) || auth.includes(this.user.role) : !auth
     }
   }
 }

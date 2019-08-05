@@ -5,13 +5,13 @@ const users = {
   general: {
     name: 'general',
     email: 'general@gmail.com',
-    role: 'general',
+    role: ['general'],
     token: 'mock-token-general'
   },
   admin: {
     name: 'admin',
     email: 'admin@gmail.com',
-    role: 'admin',
+    role: ['admin'],
     token: 'mock-token-admin'
   }
 }
