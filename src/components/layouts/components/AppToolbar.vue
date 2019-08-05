@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar clipped-left light fixed app>
+  <v-app-bar clipped-left fixed app>
     <v-app-bar-nav-icon @click.stop="$emit('toggleSidebar')" />
 
     <v-toolbar-title class="hidden-sm-and-down">
@@ -9,6 +9,7 @@
     </v-toolbar-title>
     <v-spacer />
     <v-toolbar-items>
+      <v-btn text @click="changeTheme"><v-icon>mdi-theme-light-dark</v-icon></v-btn>
       <language-switch />
       <account-icon />
     </v-toolbar-items>
@@ -23,6 +24,11 @@ export default {
   components: {
     AccountIcon,
     LanguageSwitch
+  },
+  methods: {
+    changeTheme() {
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark
+    }
   }
 }
 </script>

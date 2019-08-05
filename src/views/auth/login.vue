@@ -3,7 +3,7 @@
     <v-layout align-center justify-center>
       <v-flex xs12 sm8 md4>
         <v-card class="elevation-2">
-          <v-toolbar color="primary" dark flat>
+          <v-toolbar color="primary" flat>
             <v-toolbar-title>Login form</v-toolbar-title>
             <v-spacer />
           </v-toolbar>
