@@ -1,13 +1,12 @@
 <template>
   <v-container>
-    dash
+    <v-text-field />
   </v-container>
 </template>
 
 <script>
 export default {
-  methods: {
-  }
+  name: 'Dashboard'
 }
 </script>
 

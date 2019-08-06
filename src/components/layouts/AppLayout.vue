@@ -7,10 +7,11 @@
     <!-- 页面主体区域 -->
     <v-content class="main-content">
       <v-slide-y-transition mode="out-in">
-        <router-view />
+        <keep-alive :include="keepAliveComponents">
+          <router-view />
+        </keep-alive>
       </v-slide-y-transition>
     </v-content>
-
     <!-- Go to top -->
     <app-fab />
   </v-container>
@@ -19,6 +20,7 @@
 import AppSidebar from './components/AppSidebar'
 import AppToolbar from './components/AppToolbar'
 import AppFab from './components/AppFab'
+import { mapState } from 'vuex'
 
 export default {
   components: {
@@ -26,9 +28,10 @@ export default {
     AppToolbar,
     AppFab
   },
-  data() {
-    return {
-    }
+  computed: {
+    ...mapState({
+      keepAliveComponents: state => state.global.keepAliveComponents
+    })
   },
   methods: {
     toggleSidebar() {

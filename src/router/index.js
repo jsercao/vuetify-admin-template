@@ -45,6 +45,7 @@ export const Routes = [
         name: 'Dashboard',
         component: () => import('@/views/dashboard/index'),
         meta: {
+          keepAlive: true,
           icon: 'mdi-view-dashboard'
         }
       },
@@ -67,6 +68,10 @@ const whiteList = ['/login']
 
 router.beforeEach(async(to, from, next) => {
   NProgress.start()
+  // 缓存控制
+  if (to.meta.keepAlive) {
+    store.commit('global/keepAlive', to.name)
+  }
   const { token } = store.getters
   if (token) {
     if (to.path === '/login') {
