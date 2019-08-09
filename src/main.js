@@ -11,6 +11,9 @@ import '@/styles/index.scss'
 import Mock from './mock'
 Mock.bootstrap()
 
+// global Components
+import '@/components'
+
 // global filters
 import * as filters from './filters' // global filters
 Object.keys(filters).forEach(key => {
