@@ -23,6 +23,14 @@ export default {
     form: {
       en: 'Form',
       zh: '表单'
+    },
+    charts: {
+      en: 'Charts',
+      zh: '图表'
+    },
+    echarts: {
+      en: 'ECharts',
+      zh: 'ECharts'
     }
   }
 }

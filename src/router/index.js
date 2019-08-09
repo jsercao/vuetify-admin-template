@@ -5,6 +5,7 @@ import Login from '@/views/auth/login.vue'
 import Layout from '@/components/layouts/AppLayout.vue'
 import components from './modules/components'
 import permissions from './modules/permission'
+import charts from './modules/charts'
 
 import store from '@/store'
 
@@ -49,6 +50,7 @@ export const Routes = [
           icon: 'mdi-view-dashboard'
         }
       },
+      charts,
       components,
       permissions
     ]
