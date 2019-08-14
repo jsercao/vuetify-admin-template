@@ -31,6 +31,10 @@ export default {
     echarts: {
       en: 'ECharts',
       zh: 'ECharts'
+    },
+    video: {
+      en: 'Video',
+      zh: 'Video'
     }
   }
 }

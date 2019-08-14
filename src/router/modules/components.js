@@ -12,6 +12,14 @@ const routes = {
   },
   children: [
     {
+      path: 'video',
+      name: 'video',
+      component: () => import('@/views/components/video'),
+      meta: {
+        icon: ''
+      }
+    },
+    {
       path: 'snackbar',
       name: 'snackbar',
       component: () => import('@/views/components/snackbar'),
