@@ -18,8 +18,8 @@ const getLocale = (lang, lcs) => {
   return locale
 }
 
-const enLocale = Object.assign({}, getLocale('en', locales), enLang)
-const zhLocale = Object.assign({}, getLocale('zh', locales), zhLang)
+const enLocale = Object.assign({}, getLocale('en', locales), { $vuetify: enLang })
+const zhLocale = Object.assign({}, getLocale('zh', locales), { $vuetify: zhLang })
 const messages = {
   en: enLocale,
   zh: zhLocale
